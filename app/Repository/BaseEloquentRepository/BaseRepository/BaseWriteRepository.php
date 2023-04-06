@@ -10,25 +10,25 @@ class BaseWriteRepository implements BaseWriteRepositoryInterface
     protected $model;
 
     // Set the associated model
-    public function setModel(Model $model): static
+    public function setModel(Model $model): BaseWriteRepositoryInterface
     {
         $this->model = $model->setConnection('mysql')->newQuery();
         return $this;
     }
 
-    public function makeAndSave(array $data)
+    public function makeAndSave(array $data): Model
     {
         return $this->model->make($data)->save();
     }
 
     // create a new record in the database
-    public function create(array $data)
+    public function create(array $data): Model
     {
         return $this->model->create($data);
     }
 
     // update record in the database
-    public function update(array $data, $id)
+    public function update(array $data, $id): Model
     {
         $record = $this->model->findOrFail($id);
         return $record->update($data);

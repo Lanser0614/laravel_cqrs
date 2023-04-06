@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 interface BaseReadRepositoryInterface
 {
-    public function setModel(Model $model);
+    public function setModel(Model $model): BaseReadRepositoryInterface;
 
-    public function all();
+    public function all(): BaseReadRepositoryInterface;
 
-    public function show($id);
+    public function show($id): BaseReadRepositoryInterface;
 
-    public function with(array $relation);
+    public function with(array $relation): BaseReadRepositoryInterface;
 
-    public function getModel();
+    public function getModel(): Model;
 }
